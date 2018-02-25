@@ -1,4 +1,5 @@
 import React from "react";
+import Gain from "./Gain";
 
 class AudioOutput extends React.Component {
   state = {
@@ -10,10 +11,15 @@ class AudioOutput extends React.Component {
   }
 
   render() {
+    if (!this.state.audioContext) return null;
     return (
-      <div>
+      <React.Fragment>
         <h1>AudioOutput</h1>
-      </div>
+        <Gain
+          context={this.state.audioContext}
+          output={this.state.audioContext.destination}
+        />
+      </React.Fragment>
     );
   }
 }
