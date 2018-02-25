@@ -1,5 +1,5 @@
 import React from "react";
-import Oscillator from "./Oscillator";
+import SinOscillator from "./SinOscillator";
 
 class Gain extends React.Component {
   state = { gain: null };
@@ -21,7 +21,7 @@ class Gain extends React.Component {
     return (
       <React.Fragment>
         <h1>Gain</h1>
-        <Oscillator context={this.props.context} output={this.state.gain} />
+        <SinOscillator context={this.props.context} output={this.state.gain} />
       </React.Fragment>
     );
   }
