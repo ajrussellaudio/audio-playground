@@ -1,5 +1,6 @@
 import React from "react";
 import Gain from "./Gain";
+import SinOscillator from "./SinOscillator";
 
 class AudioOutput extends React.Component {
   state = {
@@ -18,7 +19,9 @@ class AudioOutput extends React.Component {
         <Gain
           context={this.state.audioContext}
           output={this.state.audioContext.destination}
-        />
+        >
+          <SinOscillator />
+        </Gain>
       </React.Fragment>
     );
   }

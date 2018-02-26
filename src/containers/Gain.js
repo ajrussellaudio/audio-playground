@@ -1,27 +1,25 @@
 import React from "react";
-import SinOscillator from "./SinOscillator";
+import Amplifier from "../components/audio/Amplifier";
+import LinSlider from "../components/ui/LinSlider";
 
 class Gain extends React.Component {
-  state = { gain: null };
+  state = { level: 0 };
 
-  connect = () => {
-    this.state.gain.connect(this.props.output);
+  handleLevelSlider = newLevel => {
+    this.setState({ level: newLevel });
   };
-
-  componentDidMount() {
-    this.setState(
-      {
-        gain: this.props.context.createGain()
-      },
-      this.connect
-    );
-  }
 
   render() {
     return (
       <React.Fragment>
-        <h1>Gain</h1>
-        <SinOscillator context={this.props.context} output={this.state.gain} />
+        <Amplifier level={this.state.level} {...this.props} />
+        <LinSlider
+          min={0}
+          max={1}
+          steps={128}
+          value={this.state.level}
+          onChange={this.handleLevelSlider}
+        />
       </React.Fragment>
     );
   }
